@@ -35,8 +35,11 @@ namespace NetCore
             services.AddDbContext<NetCoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ReservaDb")));
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IProductoRepository, ProductoRepository>();
+            services.AddScoped<IFacturaRepository, FacturaRepository>();
+
 
             services.AddMediatR(this.GetType().Assembly);
 

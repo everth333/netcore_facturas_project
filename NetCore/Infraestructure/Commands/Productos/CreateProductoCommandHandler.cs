@@ -13,13 +13,13 @@ namespace NetCore.Infraestructure.Commands.Productos
 {
     public class CreateProductoCommandHandler : IRequestHandler<CreateProductoCommand, Producto>
     {
-        private readonly IProductoRepository _productoRepository;
+        private readonly IProductoRepository _Repository;
         private readonly IUnitOfWork _unitOfWork;
 
         public CreateProductoCommandHandler(IProductoRepository productoRepository, IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _productoRepository = productoRepository;
+            _Repository = productoRepository;
         }
 
         public async Task<Producto> Handle(CreateProductoCommand request, CancellationToken cancellationToken)
@@ -32,7 +32,7 @@ namespace NetCore.Infraestructure.Commands.Productos
                 Stock = request.Stock,
             };
 
-            await _productoRepository.AddAsync(producto);
+            await _Repository.AddAsync(producto);
             await _unitOfWork.CompleteAsync();
 
             return producto;
