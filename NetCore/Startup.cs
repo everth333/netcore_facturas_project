@@ -13,6 +13,17 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NetCore.Model;
 
+using NetCore.Config;
+using NetCore.Repositories;
+using MediatR;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+//using Swashbuckle.AspNetCore.Swagger;
+
 namespace NetCore
 {
     public class Startup
@@ -28,7 +39,20 @@ namespace NetCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<NetCoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ReservaDb")));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IProductoRepository, ProductoRepository>();
+
+            services.AddMediatR(this.GetType().Assembly);
+
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .ConfigureApiBehaviorOptions(options =>
+                {
+                    options.InvalidModelStateResponseFactory = InvalidModelStateResponseFactory.ProduceErrorResponse;
+                });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
