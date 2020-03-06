@@ -11,18 +11,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using NetCore.Model;
 
-using NetCore.Config;
-using NetCore.Repositories;
+using NetCore.Infraestructure.Persistence.Config;
+using NetCore.Framework;
+using NetCore.Infraestructure.Persistence;
+using NetCore.Infraestructure.Persistence.Repositories;
 using MediatR;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-//using Swashbuckle.AspNetCore.Swagger;
 
 namespace NetCore
 {
