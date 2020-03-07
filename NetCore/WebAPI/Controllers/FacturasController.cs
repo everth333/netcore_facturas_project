@@ -57,7 +57,7 @@ namespace NetCore.WebAPI.Controllers
         [ProducesResponseType(typeof(ErrorResource), 400)]
         public async Task<IActionResult> PostAsync([FromBody] FacturaResource resource)
         {
-            var factura = await _mediator.Send(new CreateDetalleCommand(resource.IdCliente, resource.Fecha, resource.Importe, resource.Nit, resource.Razon_Social, resource.Codigo_Control, resource.Modo_Pago, resource.Codigo_Tarjeta));
+            var factura = await _mediator.Send(new CreateFacturaCommand(resource.IdCliente, resource.Fecha, resource.Importe, resource.Nit, resource.Razon_Social, resource.Codigo_Control, resource.Modo_Pago, resource.Codigo_Tarjeta));
             return Created($"/api/facturas/{factura.Id}", factura);
         }
 
@@ -70,7 +70,7 @@ namespace NetCore.WebAPI.Controllers
         [ProducesResponseType(typeof(ErrorResource), 400)]
         public async Task<IActionResult> UpdateAsync(int id, [FromBody] FacturaResource resource)
         {
-            var response = await _mediator.Send(new UpdateClienteCommand(id, resource.IdCliente, resource.Fecha, resource.Importe, resource.Nit, resource.Razon_Social, resource.Codigo_Control, resource.Modo_Pago, resource.Codigo_Tarjeta));
+            var response = await _mediator.Send(new UpdateFacturaCommand(id, resource.IdCliente, resource.Fecha, resource.Importe, resource.Nit, resource.Razon_Social, resource.Codigo_Control, resource.Modo_Pago, resource.Codigo_Tarjeta));
             return ProduceFacturaResponse(response);
         }
 
@@ -82,7 +82,7 @@ namespace NetCore.WebAPI.Controllers
         [ProducesResponseType(typeof(ErrorResource), 400)]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var response = await _mediator.Send(new DeleteClienteCommand(id));
+            var response = await _mediator.Send(new DeleteFacturaCommand(id));
             return ProduceFacturaResponse(response);
         }
 

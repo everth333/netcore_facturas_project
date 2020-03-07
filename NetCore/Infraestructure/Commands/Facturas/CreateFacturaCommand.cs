@@ -8,7 +8,7 @@ using MediatR;
 
 namespace NetCore.Infraestructure.Commands.Facturas
 {
-    public class CreateDetalleCommand : IRequest<Factura>
+    public class CreateFacturaCommand : IRequest<Factura>
     {
 
         public int IdCliente { get; private set; }
@@ -21,7 +21,7 @@ namespace NetCore.Infraestructure.Commands.Facturas
         public int Codigo_Tarjeta { get; private set; }
 
 
-        public CreateDetalleCommand(int idCliente,DateTime fecha,  decimal importe, int nit, string razon_Social, string codigo_Control, int modo_Pago, int codigo_Tarjeta)
+        public CreateFacturaCommand(int idCliente,DateTime fecha,  decimal importe, int nit, string razon_Social, string codigo_Control, int modo_Pago, int codigo_Tarjeta)
         {
             this.IdCliente = idCliente;
             this.Fecha = fecha;

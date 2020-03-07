@@ -9,11 +9,11 @@ using MediatR;
 
 namespace NetCore.Infraestructure.Commands.Facturas
 {
-    public class DeleteClienteCommand : IRequest<Response<Factura>>
+    public class DeleteFacturaCommand : IRequest<Response<Factura>>
     {
         public int Id { get; private set; }
 
-        public DeleteClienteCommand(int id)
+        public DeleteFacturaCommand(int id)
         {
             this.Id = id;
         }

@@ -13,18 +13,18 @@ using NetCore.Infraestructure.Commands.Facturas;
 
 namespace NetCore.Infraestructure.Commands.Facturas
 {
-    public class DeleteClienteCommandHandler : IRequestHandler<DeleteClienteCommand, Response<Factura>>
+    public class DeleteFacturaCommandHandler : IRequestHandler<DeleteFacturaCommand, Response<Factura>>
     {
         private readonly IFacturaRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public DeleteClienteCommandHandler(IFacturaRepository repository, IUnitOfWork unitOfWork)
+        public DeleteFacturaCommandHandler(IFacturaRepository repository, IUnitOfWork unitOfWork)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Response<Factura>> Handle(DeleteClienteCommand request, CancellationToken cancellationToken)
+        public async Task<Response<Factura>> Handle(DeleteFacturaCommand request, CancellationToken cancellationToken)
         {
             var factura = await _repository.FindByIdAsync(request.Id);
 

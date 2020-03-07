@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace NetCore.Infraestructure.Commands.Facturas
 {
-    public class UpdateClienteCommandHandler : IRequestHandler<UpdateClienteCommand, Response<Factura>>
+    public class UpdateClienteCommandHandler : IRequestHandler<UpdateFacturaCommand, Response<Factura>>
     {
         private readonly IFacturaRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
@@ -23,7 +23,7 @@ namespace NetCore.Infraestructure.Commands.Facturas
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Response<Factura>> Handle(UpdateClienteCommand request, CancellationToken cancellationToken)
+        public async Task<Response<Factura>> Handle(UpdateFacturaCommand request, CancellationToken cancellationToken)
         {
             var factura = await _repository.FindByIdAsync(request.Id);
 
