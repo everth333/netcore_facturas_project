@@ -7,21 +7,21 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetCore.Infraestructure.Persistence;
 
-namespace NetCore.Migrations
+namespace NetCore.WebAPI.Migrations
 {
     [DbContext(typeof(NetCoreContext))]
-    [Migration("20200227201449_Factura")]
-    partial class Factura
+    [Migration("20200306182605_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("NetCore.Entities.Cliente", b =>
+            modelBuilder.Entity("NetCore.Domain.Entities.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,8 +30,13 @@ namespace NetCore.Migrations
                     b.Property<string>("Apellidos")
                         .HasColumnType("VARCHAR(150)");
 
-                    b.Property<string>("Direccion")
-                        .HasColumnType("VARCHAR(MAX)");
+                    b.Property<DateTime>("DateCreated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("sysdatetime()")
+                        .HasDefaultValueSql("sysdatetime()");
+
+                    b.Property<DateTime?>("DateUpdated")
+                        .HasColumnType("sysdatetime()");
 
                     b.Property<string>("Email")
                         .HasColumnType("VARCHAR(100)");
@@ -50,7 +55,7 @@ namespace NetCore.Migrations
                     b.ToTable("ADM_Cliente");
                 });
 
-            modelBuilder.Entity("NetCore.Entities.Detalle", b =>
+            modelBuilder.Entity("NetCore.Domain.Entities.Detalle", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -73,7 +78,7 @@ namespace NetCore.Migrations
                     b.ToTable("ADM_Detalle");
                 });
 
-            modelBuilder.Entity("NetCore.Entities.Factura", b =>
+            modelBuilder.Entity("NetCore.Domain.Entities.Factura", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,7 +113,7 @@ namespace NetCore.Migrations
                     b.ToTable("ADM_Factura");
                 });
 
-            modelBuilder.Entity("NetCore.Entities.Persona", b =>
+            modelBuilder.Entity("NetCore.Domain.Entities.Persona", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -125,7 +130,7 @@ namespace NetCore.Migrations
                     b.ToTable("ADM_Persona");
                 });
 
-            modelBuilder.Entity("NetCore.Entities.Producto", b =>
+            modelBuilder.Entity("NetCore.Domain.Entities.Producto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -146,6 +151,42 @@ namespace NetCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ADM_Producto");
+                });
+
+            modelBuilder.Entity("NetCore.Domain.Entities.Cliente", b =>
+                {
+                    b.OwnsOne("NetCore.Domain.ValueObject.Direccion", "Direccion", b1 =>
+                        {
+                            b1.Property<int>("ClienteId")
+                                .ValueGeneratedOnAdd()
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Barrio")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnName("Barrio")
+                                .HasMaxLength(100)
+                                .HasDefaultValue("");
+
+                            b1.Property<string>("Calle")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnName("Calle")
+                                .HasMaxLength(100)
+                                .HasDefaultValue("");
+
+                            b1.Property<int>("Numero")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnName("Numero")
+                                .HasDefaultValue(1);
+
+                            b1.HasKey("ClienteId");
+
+                            b1.ToTable("ADM_Cliente");
+
+                            b1.HasOne("NetCore.Domain.Entities.Cliente")
+                                .WithOne("Direccion")
+                                .HasForeignKey("NetCore.Domain.ValueObject.Direccion", "ClienteId")
+                                .OnDelete(DeleteBehavior.Cascade);
+                        });
                 });
 #pragma warning restore 612, 618
         }

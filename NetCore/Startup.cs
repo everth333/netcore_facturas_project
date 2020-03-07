@@ -39,6 +39,8 @@ namespace NetCore
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IProductoRepository, ProductoRepository>();
             services.AddScoped<IFacturaRepository, FacturaRepository>();
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IDetalleRepository, DetalleRepository>();
 
 
             services.AddMediatR(this.GetType().Assembly);

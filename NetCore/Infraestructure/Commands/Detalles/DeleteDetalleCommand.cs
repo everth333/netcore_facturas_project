@@ -7,13 +7,13 @@ using NetCore.Infraestructure.Communication;
 using NetCore.Domain.Entities;
 using MediatR;
 
-namespace NetCore.Infraestructure.Commands.Facturas
+namespace NetCore.Infraestructure.Commands.Detalles
 {
-    public class DeleteClienteCommand : IRequest<Response<Factura>>
+    public class DeleteDetalleCommand : IRequest<Response<Detalle>>
     {
         public int Id { get; private set; }
 
-        public DeleteClienteCommand(int id)
+        public DeleteDetalleCommand(int id)
         {
             this.Id = id;
         }

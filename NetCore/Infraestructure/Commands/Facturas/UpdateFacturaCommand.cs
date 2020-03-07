@@ -10,7 +10,7 @@ using NetCore.Domain.Entities;
 
 namespace NetCore.Infraestructure.Commands.Facturas
 {
-    public class UpdateFacturaCommand : IRequest<Response<Factura>>
+    public class UpdateClienteCommand : IRequest<Response<Factura>>
     {
         public int Id { get; private set; }
         public int IdCliente { get; private set; }
@@ -22,7 +22,7 @@ namespace NetCore.Infraestructure.Commands.Facturas
         public int Modo_Pago { get; private set; }
         public int Codigo_Tarjeta { get; private set; }
 
-        public UpdateFacturaCommand(int id, int idCliente, DateTime fecha, decimal importe, int nit, string razon_Social, string codigo_Control, int modo_Pago, int codigo_Tarjeta)
+        public UpdateClienteCommand(int id, int idCliente, DateTime fecha, decimal importe, int nit, string razon_Social, string codigo_Control, int modo_Pago, int codigo_Tarjeta)
         {
             this.Id = id;
             this.IdCliente = idCliente;

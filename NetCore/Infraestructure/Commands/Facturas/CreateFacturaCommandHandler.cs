@@ -11,18 +11,18 @@ using System.Threading;
 
 namespace NetCore.Infraestructure.Commands.Facturas
 {
-    public class CreateFacturaCommandHandler : IRequestHandler<CreateFacturaCommand, Factura>
+    public class CreateDetalleCommandHandler : IRequestHandler<CreateDetalleCommand, Factura>
     {
         private readonly IFacturaRepository _Repository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateFacturaCommandHandler(IFacturaRepository facturaRepository, IUnitOfWork unitOfWork)
+        public CreateDetalleCommandHandler(IFacturaRepository facturaRepository, IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _Repository = facturaRepository;
         }
 
-        public async Task<Factura> Handle(CreateFacturaCommand request, CancellationToken cancellationToken)
+        public async Task<Factura> Handle(CreateDetalleCommand request, CancellationToken cancellationToken)
         {
             var factura = new Factura
             {
