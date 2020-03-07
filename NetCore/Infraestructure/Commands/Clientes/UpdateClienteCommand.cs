@@ -21,7 +21,10 @@ namespace NetCore.Infraestructure.Commands.Clientes
         public string Telefono { get; private set; }
         public Direccion Direccion { get; private set; }
 
-        public UpdateClienteCommand(int id,string nombre, string apellidos, DateTime fecnac, string email, string telefono, Direccion direccion)
+        public DateTime DateCreated { get; private set; }
+        public DateTime? DateUpdated { get; private set; }
+
+        public UpdateClienteCommand(int id,string nombre, string apellidos, DateTime fecnac, string email, string telefono, Direccion direccion, DateTime datecreate, DateTime? dateupdate)
         {
             this.Id = id;
             this.Nombre = nombre;
@@ -30,6 +33,8 @@ namespace NetCore.Infraestructure.Commands.Clientes
             this.Email = email;
             this.Telefono = telefono;
             this.Direccion = direccion;
+            this.DateCreated = datecreate;
+            this.DateUpdated = dateupdate;
         }
 
     }

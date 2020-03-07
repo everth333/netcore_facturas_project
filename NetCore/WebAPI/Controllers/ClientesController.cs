@@ -69,7 +69,7 @@ namespace NetCore.WebAPI.Controllers
         [ProducesResponseType(typeof(ErrorResource), 400)]
         public async Task<IActionResult> UpdateAsync(int id, [FromBody] ClienteResource resource)
         {
-            var response = await _mediator.Send(new UpdateClienteCommand(id, resource.Nombre, resource.Apellidos, resource.FechaNaciemiento, resource.Email, resource.Telefono, resource.Direccion));
+            var response = await _mediator.Send(new UpdateClienteCommand(id, resource.Nombre, resource.Apellidos, resource.FechaNaciemiento, resource.Email, resource.Telefono, resource.Direccion,resource.DateCreated,resource.DateUpdated));
             return ProduceResponse(response);
         }
 

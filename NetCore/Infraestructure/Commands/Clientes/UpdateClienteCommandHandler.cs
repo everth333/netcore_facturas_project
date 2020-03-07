@@ -38,6 +38,8 @@ namespace NetCore.Infraestructure.Commands.Clientes
             cliente.Email = request.Email;
             cliente.Telefono = request.Telefono;
             cliente.Direccion = request.Direccion;
+            cliente.DateCreated = request.DateCreated;
+            cliente.DateUpdated = request.DateUpdated;
 
 
             _repository.Update(cliente);

@@ -31,7 +31,9 @@ namespace NetCore.Infraestructure.Commands.Clientes
                 FechaNaciemiento = request.FechaNaciemiento,
                 Email = request.Email,
                 Telefono = request.Telefono,
-                Direccion = request.Direccion
+                Direccion = request.Direccion,
+                DateCreated = request.DateCreated,
+                DateUpdated = request.DateUpdated
             };
 
             await _Repository.AddAsync(cliente);

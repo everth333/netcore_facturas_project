@@ -10,18 +10,18 @@ namespace NetCore.WebAPI.Controllers.Resources
 {
     public class ClienteResource
     {
-        [Required]
+     //   [Required]
         [MaxLength(100)]
         public string Nombre { get; private set; }
-        [Required]
+     //   [Required]
         [MaxLength(150)]
         public string Apellidos { get; private set; }
-        [Required]
+      //  [Required]
         public DateTime FechaNaciemiento { get; private set; }
-        [Required]
+      //  [Required]
         [MaxLength(100)]
         public string Email { get; private set; }
-        [Required]
+       // [Required]
         [MaxLength(50)]
         public string Telefono { get; private set; }
         
