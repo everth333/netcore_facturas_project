@@ -12,23 +12,23 @@ namespace NetCore.WebAPI.Controllers.Resources
     {
      //   [Required]
         [MaxLength(100)]
-        public string Nombre { get; private set; }
+        public string Nombre { get;  set; }
      //   [Required]
         [MaxLength(150)]
-        public string Apellidos { get; private set; }
+        public string Apellidos { get;  set; }
       //  [Required]
-        public DateTime FechaNaciemiento { get; private set; }
+        public DateTime FechaNaciemiento { get;  set; }
       //  [Required]
         [MaxLength(100)]
-        public string Email { get; private set; }
+        public string Email { get;  set; }
        // [Required]
         [MaxLength(50)]
-        public string Telefono { get; private set; }
+        public string Telefono { get;  set; }
         
-        public Direccion Direccion { get; private set; }
+        public Direccion Direccion { get;  set; }
 
-        public DateTime DateCreated { get; private set; }
-        public DateTime? DateUpdated { get; private set; }
+        public DateTime DateCreated { get;  set; }
+        public DateTime? DateUpdated { get;  set; }
 
     }
 }

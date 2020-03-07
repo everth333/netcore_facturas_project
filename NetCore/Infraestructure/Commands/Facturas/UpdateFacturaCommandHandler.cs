@@ -12,12 +12,12 @@ using System.Threading;
 
 namespace NetCore.Infraestructure.Commands.Facturas
 {
-    public class UpdateClienteCommandHandler : IRequestHandler<UpdateFacturaCommand, Response<Factura>>
+    public class UpdateFacturaCommandHandler : IRequestHandler<UpdateFacturaCommand, Response<Factura>>
     {
         private readonly IFacturaRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public UpdateClienteCommandHandler(IFacturaRepository repository, IUnitOfWork unitOfWork)
+        public UpdateFacturaCommandHandler(IFacturaRepository repository, IUnitOfWork unitOfWork)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
