@@ -13,7 +13,11 @@ PostMan(download)
 
 # 3. Repositorio GitHub del Proyecto
 El repositorio del Proyecto se encuentra en la siguiente dirección:
+Repositorio de Tarea 2:
 https://github.com/jbaguilarr/netcore_facturas_project
+Repositorio de Tarea 3:
+https://github.com/everth333/netcore_facturas_project
+
 
 # 4. Script de Base de Datos
 El Script de la Base de Datos en SQL Server se encuentra en la siguiente dirección:
@@ -28,25 +32,25 @@ Implementación de los Controllers-API.
 # 6. Descripción Técnica de APIs
 # Obtener Listado de Clientes desde Postman:
 Método HTTP: GET
-URL: http://localhost:63320/api/cliente
+URL: http://localhost:63320/api/clientes
 Autorización: No Auth
 Headers: No
 Body: None
 
-Desde el Browser: http://localhost:63320/api/cliente
+Desde el Browser: http://localhost:63320/api/clientes
 
 # Obtener Datos de un Cliente desde Postman:
 Método HTTP: GET
-URL: http://localhost:63320/api/cliente/1
+URL: http://localhost:63320/api/clientes/1
 Autorización: No Auth
 Headers: No
 Body: None
 
-Desde el Browser: http://localhost:63320/api/cliente/1
+Desde el Browser: http://localhost:63320/api/clientes/1
 
 # Insertar Datos de un Cliente desde Postman:
 Método HTTP: POST
-URL: http://localhost:63320/api/Cliente
+URL: http://localhost:63320/api/Clientes
 Autorización: No Auth
 Headers: Key:”Content-Type”    Value:  "application/json" 
 Body: RAW : {		
@@ -66,7 +70,7 @@ Body: RAW : {
 
 # Modificar Datos de un Cliente desde Postman:
 Método HTTP: PUT
-URL: http://localhost:63320/api/Cliente
+URL: http://localhost:63320/api/Clientes
 Autorización: No Auth
 Headers: Key:”Content-Type”    Value:  "application/json" 
 Body: RAW : {		
@@ -87,16 +91,61 @@ Body: RAW : {
 
 # Eliminar los Datos de un Cliente desde Postman:
 Método HTTP: DELETE
-URL: http://localhost:63320/api/Cliente/5
+URL: http://localhost:63320/api/Clientes/5
 Autorización: No Auth
 Headers: No
 Body: None
 
 # 7. Listados usando APIs en Browser
-Listado de Clientes: http://localhost:63320/api/Cliente
-Listado de Productos: http://localhost:63320/api/Producto
-Listado de Facturas: http://localhost:63320/api/Factura
-Listado de Detalle Facturas: http://localhost:63320/api/Detalle
+Listado de Clientes: http://localhost:63320/api/Clientes
+Listado de Productos: http://localhost:63320/api/Productos
+Listado de Facturas: http://localhost:63320/api/Facturas
+Listado de Detalle Facturas: http://localhost:63320/api/Detalles
+
+# 8. Aplicación del Proyecto con Clean Architecture
+# Estructura del Proyecto:
+
+Implementación de la Carpeta Domain.
+Entities
+ValueObject
+
+Implementación de la Carpeta Framework.
+Interfaces
+
+Implementación de la Carpeta Infraestructure.
+Commands
+Por cada Entidad
+Comunication
+Persistence
+Configuration
+Repositories
+DBContext
+UnitOfWork
+Queries
+Por cada Entidad
+
+Implementación de la Carpeta WebAPI.
+Controllers
+Resources
+Controllers en PLURAL (Clientes, Facturas, Productos y Detalles)
+Migrations
+
+# 9. URL de APIs con Clean Architecture
+
+# CLIENTES:
+http://localhost:63320/api/clientes
+http://localhost:63320/api/clientes/1
+# PRODUCTOS:
+http://localhost:63320/api/productos
+http://localhost:63320/api/productos/1
+# FACTURAS:
+http://localhost:63320/api/facturas
+http://localhost:63320/api/facturas/1
+# DETALLES:
+http://localhost:63320/api/detalles
+http://localhost:63320/api/detalles/1
+
+
 
 
 
